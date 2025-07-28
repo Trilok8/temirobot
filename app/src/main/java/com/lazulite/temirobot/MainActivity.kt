@@ -238,28 +238,23 @@ class MainActivity : ComponentActivity(),OnRobotReadyListener,Robot.NlpListener,
 
                 val buttonItems = listOf(
                     ButtonItem("ROBOTIC AREA", R.drawable.btn_robotic),
-                    ButtonItem("TECH EVENTS AREA", R.drawable.btn_tech_events),
-                    ButtonItem("OIL & GAS EVENTS AREA", R.drawable.btn_oil_gas),
-                    ButtonItem("COMMON AREA", R.drawable.btn_common_area),
+                    ButtonItem("TECH TERRA", R.drawable.btn_tech_events),
+                    ButtonItem("ENERGY TECH", R.drawable.btn_oil_gas),
+                    ButtonItem("SOCIAL PARK", R.drawable.btn_common_area),
                     ButtonItem("LAUNCH AREA", R.drawable.btn_launch),
-                    ButtonItem("REAL ESTATE EVENTS AREA", R.drawable.btn_real_estate),
-                    ButtonItem("PHOTO OPS", R.drawable.btn_photo_ops),
-                    ButtonItem("GAMING ZONE", R.drawable.btn_gaming_zone),
-                    ButtonItem("NEW TECHNOLOGIES", R.drawable.btn_new_technologies)
+                    ButtonItem("BUILD BOULEVARD", R.drawable.btn_real_estate)
                 )
 
                 buttonItems.forEach { imageRes ->
                     ImageButton(imageRes.imageRes) {
                         Log.d("TEMI_LOCATION",imageRes.title)
+                        Robot.getInstance().goTo(imageRes.title)
                         selectedTitle.value = imageRes.title
                     }
                     Spacer(modifier = Modifier.height(0.dp)) // space between buttons
                 }
             }
-            ImageButton(R.drawable.btn_show_path) {
-                Log.d("TEMI_LOCATION", "Navigating to: ${selectedTitle.value}")
-                Robot.getInstance().goTo(selectedTitle.value)
-            }
+
         }
     }
 
